@@ -1,0 +1,98 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+          "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<title><ui:insert name="title">Sistema Geração Santa</ui:insert></title>
+	<h:outputStylesheet name="/bootstrap/css/bootstrap.css" />
+	<h:outputStylesheet name="/bootstrap/template/offcanvas.css" />
+	<h:outputStylesheet
+		name="/libs/bootstrap-datepicker/bootstrap-datetimepicker.css" />
+		
+		<h:outputScript name="/libs/jquery-1.12.3.min.js" />
+	
+	 <!-- Bootstrap core CSS -->
+        <link href="resources/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen"/>
+
+        <!-- Font Awesome -->
+        <link href="resources/css/font-awesome.min.css" rel="stylesheet"/>
+
+        <!-- Pace -->
+        <link href="resources/css/pace.css" rel="stylesheet"/>
+
+        <!-- Color box -->
+        <link href="resources/css/colorbox/colorbox.css" rel="stylesheet"/>
+
+        <!-- Morris -->
+        <link href="resources/css/morris.css" rel="stylesheet"/>	
+
+        <!-- Endless -->
+        <link href="resources/css/endless.min.css" rel="stylesheet"/>
+        <link href="resources/css/endless-skin.css" rel="stylesheet"/>
+</h:head>
+
+<h:body>
+	<nav class="navbar navbar-fixed-top navbar-inverse">
+	<div class="container">
+		<div class="navbar-header">
+		<a class="navbar-brand" href="#">
+        	<img  src="../../resources/img/coroa.png" width="26px;"/>
+      	</a>
+			
+			<a class="navbar-brand" href="#">Sistema Geração Santa</a>
+		</div>
+		<div id="navbar" class="collapse navbar-collapse">
+			<ul class="nav navbar-nav">
+				<li><h:link outcome="/inicial" value="Início" />
+				</li>
+				
+				<li>
+					<a href="/sistemags/pages/parceirodeus/consParceiroDeus.jsf">Parceiro</a>
+				</li>
+				
+				<li>
+					<a href="/sistemags/pages/usuario/consUsuario.jsf">Usuario</a>
+				</li>
+				
+			</ul> 
+			
+			<h:form>
+						<ul class="nav navbar-nav navbar-right">
+							<li class="dropdown"><a href="#" class="dropdown-toggle"
+								data-toggle="dropdown" role="button" aria-haspopup="true"
+								aria-expanded="false">Menu <span class="caret"></span></a>
+						<ul class="dropdown-menu">
+							
+						<li><h:commandLink action="#{usuarioLogadoMB.deslogar}">Sair</h:commandLink></li>
+					</ul></li>
+				</ul>
+			</h:form> 
+		</div> 
+		
+		
+		
+		<!-- /.nav-collapse -->
+	</div>
+	</nav>
+	
+	<div id="conteudo">
+				<ui:insert name="conteudo">
+					<h1>Ola mundo</h1>
+				</ui:insert>
+	</div>
+
+	<h:outputScript name="/jquery-1.12.3.min.js" />
+	<h:outputScript name="/menu.js" />
+	<h:outputScript name="/bootstrap/js/bootstrap.js" />
+	<h:outputScript name="/bootstrap/template/offcanvas.js" />
+	<h:outputScript
+		name="/libs/bootstrap-datepicker/bootstrap-datetimepicker.js" />
+		<h:outputScript name="/libs/moment-with-locales.js" />
+</h:body>
+
+</html>

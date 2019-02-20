@@ -1,0 +1,53 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+          "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<title><ui:insert name="title">AC7VM</ui:insert></title>
+	<h:outputStylesheet name="/bootstrap/css/bootstrap.css" />
+	<h:outputStylesheet name="/bootstrap/template/offcanvas.css" />
+</h:head>
+
+<h:body style="background: #F2F2F2;">
+	<div>
+				<br/><br /><br />
+				<p:outputLabel value="AC7VM" style="margin-left:35%;font-size:38px;color:#f26522;"/>
+				<br/>
+		<div class="col-md-7" style="margin-left:35%;width: 25%;border: 1px solid #CFCFCF;background: white;border-radius: 10px;">
+				<h:form>
+				<br /><br />  
+				<fieldset>
+				
+					 
+					<div class="form-group">
+						<label for="exampleInputLogin">Login</label>
+						<p:inputText styleClass="form-control" id="exampleInputLogin"
+							value="#{usuarioLogadoMB.login}" />
+					</div>
+					<div class="form-group">
+						<label for="exampleInputPassword1">Senha</label>
+						<h:inputSecret styleClass="form-control" id="exampleInputPassword1"
+							value="#{usuarioLogadoMB.senha}" />
+					</div>    
+					 
+					<h:commandButton styleClass="btn btn-success"  
+						action="#{usuarioLogadoMB.validarUsuario()}"  value="Entrar" style="width: 100%;"/>
+					</fieldset>
+					<br/>
+				</h:form>
+			</div>
+			<br/>
+	</div>
+	<h:outputScript name="/jquery.min.js" />
+	<h:outputScript name="/menu.js" />
+	<h:outputScript name="/bootstrap/js/bootstrap.js" />
+	<h:outputScript name="/bootstrap/template/offcanvas.js" />
+</h:body>
+
+</html>

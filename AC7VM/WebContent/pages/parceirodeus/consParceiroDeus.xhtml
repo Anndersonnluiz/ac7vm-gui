@@ -1,0 +1,219 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="/WEB-INF/templates/padrao.xhtml">
+
+	<ui:define name="conteudo">
+		<br />
+		<br />
+		<br />
+		<br />
+		<br />
+		<br />
+
+		<h:form style="margin-left:4%;" id="formDashBoard">
+
+
+			<div class="row" style="margin-left: 2%;">
+				<div class="col-md-8">
+
+					<h3>PARCEIRO DE DEUS MENSAL</h3>
+					<hr />
+					<h:dataTable value="#{parceiroDeusMensalMB.listaParceiro}" var="parceiro" id="tabelaParceiro"
+						styleClass="table" style="width:100%;">
+						<h:column>
+							<f:facet name="header">SUB-Equipe</f:facet>
+							<h:outputText value="#{parceiro.subequipe_idsubequipe}" />
+						</h:column>
+						<h:column>
+							<f:facet name="header">Mês</f:facet>
+							<h:outputText value="#{parceiro.mes}" />
+						</h:column>
+						<h:column>
+							<f:facet name="header">Ano</f:facet>
+							<h:outputText value="#{parceiro.ano}" />
+						</h:column>
+						<h:column>
+							<f:facet name="header">Meta</f:facet>
+							<h:outputText value="#{parceiro.valormeta}" >
+								<f:convertNumber pattern="##,###,###,###.##"
+								minFractionDigits="2" />
+							</h:outputText>
+						</h:column>
+						<h:column>
+							<f:facet name="header">Alcançado</f:facet>
+							<h:outputText value="#{parceiro.valoralcancado}" >
+								<f:convertNumber pattern="##,###,###,###.##"
+								minFractionDigits="2" />
+							</h:outputText>
+						</h:column>
+						<h:column>
+							<span>
+								<p:commandLink styleClass="btn btn-default" action="#{parceiroDeusMensalMB.editar(parceiro)}" update=":formDashBoard:idsub, :formDashBoard:meta, :formDashBoard:mes, :formDashBoard:ano, :formDashBoard:tabelaParceiro">Editar</p:commandLink>
+							 
+							</span>
+							<span> <h:commandLink styleClass="btn btn-warning"
+									action="#" value="Excluir"
+									onclick="return confirm('Tem certeza da exclusão da turma  #{noticias}')">
+									<f:param name="idnoticias" value="#{noticias}" />
+								</h:commandLink>
+							</span>
+
+
+						</h:column>
+
+					</h:dataTable>
+				</div>
+				<div class="col-md-4">
+					
+					<h4>Cadastro de Metas Mensal</h4>
+					<hr/>
+					<br/>
+					<div class="form-group">
+						<label for="exampleInputTitulo">ID SUB</label>
+						<h:inputText styleClass="form-control"
+							value="#{parceiroDeusMensalMB.parceirodeusmensal.subequipe_idsubequipe}" id="idsub" style="width:98%"/>
+					</div>
+					
+					<div class="form-group">
+						<label for="exampleInputTitulo">Valor da meta</label>
+						<h:inputText styleClass="form-control"
+							value="#{parceiroDeusMensalMB.parceirodeusmensal.valormeta}" id="meta" style="width:98%">
+							<f:convertNumber pattern="##,###,###,###.##" minFractionDigits="2" />
+						</h:inputText>
+					</div>
+					
+					<div class="form-group">
+						<label for="exampleInputDescricao">Mês</label>
+						<h:inputText styleClass="form-control"
+							value="#{parceiroDeusMensalMB.parceirodeusmensal.mes}" id="mes" style="width:98%"/>
+					</div>
+					
+					<div class="form-group">
+						<label for="exampleInputDescricao">Ano</label>
+						<h:inputText styleClass="form-control"
+							value="#{parceiroDeusMensalMB.parceirodeusmensal.ano}" id="ano" style="width:98%"/>
+					</div>
+					
+					<button type="reset" class="btn btn-default">Restaurar</button>
+					<p:commandLink styleClass="btn btn-success" update="idsub, meta, mes, ano, tabelaParceiro"
+						action="#{parceiroDeusMensalMB.salvar()}" value="Salvar" style="margin-left:5%;" />
+					<br /><br />
+				</div>
+			</div>
+			<br/><br/><br/>
+			<hr/>
+			<br/><br/><br/>
+			<div class="row" style="margin-left: 2%;">
+				<div class="col-md-8">
+
+					<h3>PARCEIRO DE DEUS ANUAL</h3>
+					<hr />
+					<h:dataTable value="#{parceiroDeusMensalMB.listaParceiroAnual}" var="parceiro" id="tabelaParceiroAnual"
+						styleClass="table" style="width:100%;">
+						<h:column>
+							<f:facet name="header">SUB-Equipe</f:facet>
+							<h:outputText value="#{parceiro.subequipe_idsubequipe}" />
+						</h:column>
+						<h:column>
+							<f:facet name="header">Ano</f:facet>
+							<h:outputText value="#{parceiro.ano}" />
+						</h:column>
+						<h:column>
+							<f:facet name="header">Meta</f:facet>
+							<h:outputText value="#{parceiro.valormeta}" >
+								<f:convertNumber pattern="##,###,###,###.##"
+								minFractionDigits="2" />
+							</h:outputText>
+						</h:column>
+						<h:column>
+							<f:facet name="header">Alcançado</f:facet>
+							<h:outputText value="#{parceiro.valoralcancado}" >
+								<f:convertNumber pattern="##,###,###,###.##"
+								minFractionDigits="2" />
+							</h:outputText>
+						</h:column>
+						<h:column>
+							<span>
+								<p:commandLink styleClass="btn btn-default" action="#{parceiroDeusMensalMB.editarAnual(parceiro)}" update=":formDashBoard:idsubanual, :formDashBoard:metaanual, :formDashBoard:anoanual, :formDashBoard:tabelaParceiroAnual">Editar</p:commandLink>
+							 
+							</span>
+							<span> <h:commandLink styleClass="btn btn-warning"
+									action="#" value="Excluir"
+									onclick="return confirm('Tem certeza da exclusão da turma  #{noticias}')">
+									<f:param name="idnoticias" value="#{noticias}" />
+								</h:commandLink>
+							</span>
+
+
+						</h:column>
+
+					</h:dataTable>
+				</div>
+				<div class="col-md-4">
+					
+					<h4>Cadastro de Metas Anual</h4>
+					<hr/>
+					<br/>
+					<div class="form-group">
+						<label for="exampleInputTitulo">ID SUB</label>
+						<h:inputText styleClass="form-control"
+							value="#{parceiroDeusMensalMB.parceirodeusanual.subequipe_idsubequipe}" id="idsubanual" style="width:98%"/>
+					</div>
+					
+					<div class="form-group">
+						<label for="exampleInputTitulo">Valor da meta</label>
+						<h:inputText styleClass="form-control"
+							value="#{parceiroDeusMensalMB.parceirodeusanual.valormeta}" id="metaanual" style="width:98%">
+							<f:convertNumber pattern="##,###,###,###.##" minFractionDigits="2" />
+						</h:inputText>
+					</div>
+					
+					
+					<div class="form-group">
+						<label for="exampleInputDescricao">Ano</label>
+						<h:inputText styleClass="form-control"
+							value="#{parceiroDeusMensalMB.parceirodeusanual.ano}" id="anoanual" style="width:98%"/>
+					</div>
+					
+					<button type="reset" class="btn btn-default">Restaurar</button>
+					<p:commandLink styleClass="btn btn-success" update="idsubanual, metaanual, anoanual, tabelaParceiroAnual"
+						action="#{parceiroDeusMensalMB.salvarAnual()}" value="Salvar" style="margin-left:5%;" />
+					<br /><br />
+				</div>
+			</div>
+			
+		</h:form>
+
+		<!-- Sparkline -->
+		<script src='resources/js/jquery.sparkline.min.js'></script>
+
+		<!-- Pace -->
+		<script src='resources/js/uncompressed/pace.js'></script>
+
+		<!-- Popup Overlay -->
+		<script src='resources/js/jquery.popupoverlay.min.js'></script>
+
+		<!-- Slimscroll -->
+		<script src='resources/js/jquery.slimscroll.min.js'></script>
+
+		<!-- Modernizr -->
+		<script src='resources/js/modernizr.min.js'></script>
+
+		<!-- Cookie -->
+		<script src='resources/js/jquery.cookie.min.js'></script>
+
+		<!-- Endless -->
+		<script src="resources/js/endless/endless.js"></script>
+	</ui:define>
+
+</ui:composition>
+
+
+</html>

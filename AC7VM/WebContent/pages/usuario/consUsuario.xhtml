@@ -1,0 +1,157 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="/WEB-INF/templates/padrao.xhtml">
+
+	<ui:define name="conteudo">
+		<br />
+		<br />
+		<br />
+		<br />
+		<br />
+		<br />
+
+		<h:form style="margin-left:4%;" id="formDashBoard">
+
+
+			<div class="row" style="margin-left: 2%;">
+				<div class="col-md-8">
+
+					<h3>Usuarios</h3>
+					<hr />
+					<h:dataTable value="#{usuarioMB.listaUsuario}" var="usuario" id="tabelaUsuario"
+						styleClass="table" style="width:100%;">
+						<h:column>
+							<f:facet name="header">Usuario</f:facet>
+							<h:outputText value="#{usuario.nome}" />
+						</h:column>
+						<h:column>
+							<f:facet name="header">Telefone</f:facet>
+							<h:outputText value="#{usuario.telefone}" />
+						</h:column>
+						<h:column>
+							<f:facet name="header">Login</f:facet>
+							<h:outputText value="#{usuario.login}" />
+						</h:column>
+						<h:column>
+							<f:facet name="header">Situação</f:facet>
+							<h:outputText value="#{usuario.situacao}" />
+						</h:column>
+						<h:column>
+							<span>
+								<h:commandLink styleClass="btn btn-default" action="#{usuarioMB.editar(usuario)}" update="idsituacao, idnome, idsenha, idtelefone, idlogin, idsubequipe, idequipe, idtipoacesso, tabelaUsuario">Editar</h:commandLink>
+							 
+							</span>
+							<span> <h:commandLink styleClass="btn btn-warning"
+									action="#" value="Excluir"
+									onclick="return confirm('Tem certeza da exclusão da turma  #{noticias}')">
+									<f:param name="idnoticias" value="#{noticias}" />
+								</h:commandLink>
+							</span>
+
+
+						</h:column>
+
+					</h:dataTable>
+				</div>
+				<div class="col-md-4">
+					
+					<h4>Cadastro de Usuario</h4>
+					<hr/>
+					<br/>
+					<div class="form-group">
+						<label for="exampleInputTitulo">Nome</label>
+						<h:inputText styleClass="form-control"
+							value="#{usuarioMB.usuario.nome}" id="idnome" style="width:98%"/>
+					</div>
+					
+					<div class="form-group">
+						<label for="exampleInputTitulo">Telefone</label>
+						<p:inputMask mask="(99)99999-9999"  styleClass="form-control"
+							value="#{usuarioMB.usuario.telefone}" id="idtelefone" style="width:98%">
+						</p:inputMask>
+					</div>
+					
+					<div class="form-group">
+						<label for="exampleInputDescricao">Login</label>
+						<h:inputText styleClass="form-control"
+							value="#{usuarioMB.usuario.login}" id="idlogin" style="width:98%"/>
+					</div>
+					
+					<div class="form-group">
+						<label for="exampleInputDescricao">Senha</label>
+						<h:inputText styleClass="form-control"
+							value="#{usuarioMB.senha}" id="idsenha" style="width:98%"/>
+					</div>
+					
+					
+					<div class="form-group">
+						<label for="exampleInputDescricao">ID SUB EQUIPE</label>
+						<h:inputText styleClass="form-control"
+							value="#{usuarioMB.usuario.idsubequipe}" id="idsubequipe" style="width:98%"/>
+					</div>
+					
+					
+					
+					<div class="form-group">
+						<label for="exampleInputDescricao">ID EQUIPE</label>
+						<h:inputText styleClass="form-control"
+							value="#{usuarioMB.usuario.idequipe}" id="idequipe" style="width:98%"/>
+					</div>
+					
+					
+					
+					<div class="form-group">
+						<label for="exampleInputDescricao">Tipo Acesso</label>
+						<h:inputText styleClass="form-control"
+							value="#{usuarioMB.usuario.tipoacesso}" id="idtipoacesso" style="width:98%"/>
+					</div>
+					
+					
+					<div class="form-group">
+						<label for="exampleInputDescricao">Situação</label>
+						<h:inputText styleClass="form-control"
+							value="#{usuarioMB.usuario.situacao}" id="idsituacao" style="width:98%"/>
+					</div>
+					
+					<button type="reset" class="btn btn-default">Restaurar</button>
+					<p:commandLink styleClass="btn btn-success" update="idnome, idsenha, idtelefone, idlogin, idsubequipe, idequipe, idtipoacesso, tabelaUsuario, idsituacao"
+						action="#{usuarioMB.salvar()}" value="Salvar" style="margin-left:5%;" />
+					<br /><br />
+				</div>
+			</div>
+
+		</h:form>
+
+		<!-- Sparkline -->
+		<script src='resources/js/jquery.sparkline.min.js'></script>
+
+		<!-- Pace -->
+		<script src='resources/js/uncompressed/pace.js'></script>
+
+		<!-- Popup Overlay -->
+		<script src='resources/js/jquery.popupoverlay.min.js'></script>
+
+		<!-- Slimscroll -->
+		<script src='resources/js/jquery.slimscroll.min.js'></script>
+
+		<!-- Modernizr -->
+		<script src='resources/js/modernizr.min.js'></script>
+
+		<!-- Cookie -->
+		<script src='resources/js/jquery.cookie.min.js'></script>
+
+		<!-- Endless -->
+		<script src="resources/js/endless/endless.js"></script>
+	</ui:define>
+
+</ui:composition>
+
+
+</html>
